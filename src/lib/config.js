@@ -5,16 +5,18 @@ const netlifyUrl = process.env.URL;
 
 // API base URL configuration
 let API_BASE;
-if (isProduction && vercelUrl) {
-    // When deployed on Vercel, API routes are at /api
-    API_BASE = `https://${vercelUrl}/api`;
+if (import.meta.env.VITE_API_URL) {
+    // Use VITE_API_URL if set (highest priority)
+    API_BASE = import.meta.env.VITE_API_URL;
+} else if (isProduction && vercelUrl) {
+    // When deployed on Vercel, use the Render backend
+    API_BASE = 'https://humanizer-backend-z7dm.onrender.com';
 } else if (isProduction && netlifyUrl) {
-    // When deployed on Netlify, API routes are handled by Netlify Functions
-    // However, due to ML model size limitations, we may need external backend
-    API_BASE = process.env.API_BASE_URL || '/api';
+    // When deployed on Netlify, use the Render backend
+    API_BASE = 'https://humanizer-backend-z7dm.onrender.com';
 } else if (isProduction) {
-    // Production but not on Vercel or Netlify - you'll need to set this
-    API_BASE = process.env.API_BASE_URL || '/api';
+    // Production but not on Vercel or Netlify - use Render backend
+    API_BASE = 'https://humanizer-backend-z7dm.onrender.com';
 } else {
     // Development - local backend
     API_BASE = 'http://localhost:8080';
