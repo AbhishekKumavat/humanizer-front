@@ -11,7 +11,8 @@ const config = {
 		adapter: adapter({
 			fallback: 'index.html',
 			pages: 'build',
-			assets: 'build'
+			assets: 'build',
+			strict: false
 		})
 	}
 };

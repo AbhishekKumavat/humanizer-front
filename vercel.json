@@ -1,14 +1,13 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "routes": [
+    {
+      "src": "^/.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$",
+      "headers": {
+        "cache-control": "public, immutable, max-age=31536000"
+      }
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
