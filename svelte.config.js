@@ -9,7 +9,9 @@ const config = {
 			entries: ['*']
 		},
 		adapter: adapter({
-			fallback: 'index.html'
+			fallback: 'index.html',
+			pages: 'build',
+			assets: 'build'
 		})
 	}
 };
