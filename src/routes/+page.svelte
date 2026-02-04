@@ -139,7 +139,7 @@
 </script>
 
 <svelte:head>
-    <title>VHumanize</title>
+    <title>ReframeBase</title>
     <meta name="description" content="Transform AI-generated text into natural, human-like content and detect AI-generated text" />
 </svelte:head>
 
@@ -157,7 +157,7 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <div class="nav-brand">
-                <h1 class="brand-title">VHumanize</h1>
+                <h1 class="brand-title">ReframeBase</h1>
                 {#if $backendStatus}
                     <div class="status-dot" class:status-dot--connected={$backendStatus.status === 'healthy'}></div>
                 {/if}
